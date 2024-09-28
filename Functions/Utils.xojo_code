@@ -130,6 +130,12 @@ Protected Module Utils
 		      ddlg.InitialFolder = SpecialFolder.Pictures
 		    ElseIf(startAt.Lowercase="sys") Then
 		      ddlg.InitialFolder = SpecialFolder.Caches
+		    ElseIf(startAt.Lowercase="proj") Then
+		      If(Specialfolder.UserHome.child("Projects").child("Xojo")<>Nil) Then
+		        ddlg.InitialFolder = Specialfolder.UserHome.child("Projects").child("Xojo")
+		      Else
+		        ddlg.InitialFolder = SpecialFolder.UserHome
+		      End
 		    Else
 		      ddlg.InitialFolder = SpecialFolder.UserHome
 		    End
@@ -150,6 +156,12 @@ Protected Module Utils
 		      fdlg.InitialFolder = SpecialFolder.Pictures
 		    ElseIf(startAt.Lowercase="sys") Then
 		      fdlg.InitialFolder = SpecialFolder.Caches
+		    ElseIf(startAt.Lowercase="proj") Then
+		      If(Specialfolder.UserHome.child("Projects").child("Xojo")<>Nil) Then
+		        fdlg.InitialFolder = Specialfolder.UserHome.child("Projects").child("Xojo")
+		      Else
+		        fdlg.InitialFolder = SpecialFolder.UserHome
+		      End
 		    Else
 		      fdlg.InitialFolder = SpecialFolder.UserHome
 		    End

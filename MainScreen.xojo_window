@@ -528,7 +528,7 @@ End
 #tag Events btn_BrowseIcon
 	#tag Event
 		Sub Pressed()
-		  App.programIcon= Utils.SelectTargetDialog("home", False)
+		  App.programIcon= Utils.SelectTargetDialog("proj", False)
 		  
 		  If(App.programIcon<>Nil) Then
 		    Self.txt_Icon.Text= App.programIcon.NativePath
@@ -569,7 +569,7 @@ End
 #tag Events btn_BrowseExecutable
 	#tag Event
 		Sub Pressed()
-		  App.executableLocation= Utils.SelectTargetDialog("home", False)
+		  App.executableLocation= Utils.SelectTargetDialog("proj", False)
 		  
 		  If(App.executableLocation<>Nil) Then
 		    App.programName= App.executableLocation.Name

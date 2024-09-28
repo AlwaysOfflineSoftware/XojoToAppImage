@@ -3,7 +3,7 @@ Protected Class App
 Inherits DesktopApplication
 	#tag Event
 		Sub Opening()
-		  App.resourcesFolder= SpecialFolder.CurrentWorkingDirectory.Child("XojoToAppImage Resources")
+		  App.resourcesFolder= SpecialFolder.Resources
 		  
 		  // App.resourcesFolder= SpecialFolder.UserHome.Child("Applications") // Used for Development work
 		  
