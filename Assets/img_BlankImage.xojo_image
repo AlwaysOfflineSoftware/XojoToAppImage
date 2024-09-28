@@ -1,0 +1,40 @@
+#tag MultiImage
+Image img_BlankImage
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAABML2hvbWUvaG9wZWxlc3NkZWNveS9Qcm9qZWN0cy9Yb2pvL0Rlc2t0b3BBcHBzL1hvam9Ub0FwcEltYWdlL0Fzc2V0cy9zaG90LnBuZwMAAAAAAQEEAAAAAAEAAAAAAAAA
+		FullPath = /home/hopelessdecoy/Projects/Xojo/DesktopApps/XojoToAppImage/Assets/shot.png
+		PartialPath = ..\..\DesktopApps\XojoToAppImage\Assets\shot.png
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 50.00
+			Orientation = Any
+			Platform = 15
+			PPI = 72
+			VSize = 50.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 144
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 216
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+End Image
+#tag EndMultiImage
