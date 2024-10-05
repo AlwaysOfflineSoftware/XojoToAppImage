@@ -549,6 +549,7 @@ End
 		Sub Pressed()
 		  AppimageHandler.BuildImageDirectory
 		  AppimageHandler.CreateAppImage
+		  AppimageHandler.CheckForImage
 		End Sub
 	#tag EndEvent
 #tag EndEvents

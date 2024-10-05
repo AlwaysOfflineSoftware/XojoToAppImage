@@ -9,7 +9,9 @@ Protected Module AppimageHandler
 		  
 		  App.executableLocation.CopyTo(binDir)
 		  App.executableLocation.Parent.Child(App.executableLocation.Name+" Libs").CopyTo(binDir)
-		  App.executableLocation.Parent.Child(App.executableLocation.Name+" Resources").CopyTo(binDir)
+		  If(App.executableLocation.Parent.Child(App.executableLocation.Name+" Resources").Exists) Then
+		    App.executableLocation.Parent.Child(App.executableLocation.Name+" Resources").CopyTo(binDir)
+		  End
 		  
 		  // Create .desktop file for inner program
 		  Var desktopContents As String="[Desktop Entry]" + EndOfLine +_
@@ -36,6 +38,16 @@ Protected Module AppimageHandler
 		    App.programIcon.CopyTo(App.appDirFolder)
 		  End
 		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CheckForImage()
+		  If(SpecialFolder.UserHome.Child(App.programName+"-x86_64.AppImage").exists) Then
+		    Utils.ErrorHandler(1,"Success!","The AppImage seems to be created in user home! Please validate before distributing.")
+		  Else
+		    Utils.ErrorHandler(3,"Something Failed...","The AppImage was not found in user home.")
+		  End
 		End Sub
 	#tag EndMethod
 
