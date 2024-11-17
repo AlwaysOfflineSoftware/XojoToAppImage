@@ -11,4 +11,4 @@ When building this project in Xojo yourself, you will need to add the dependanci
 
 ![image](https://github.com/user-attachments/assets/faf7434e-2075-4724-9fe2-07aa0ec075d7)
 
-Made with <a href="https://www.xojo.com/download/">Xojo</a> (Which is free for Linux!)
+Made with <a href="https://www.xojo.com">Xojo</a> (Which is free for Linux!)
