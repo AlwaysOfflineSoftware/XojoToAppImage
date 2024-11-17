@@ -230,7 +230,7 @@ Begin DesktopWindow AboutScreen
       TabIndex        =   9
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Always Offline Software is a company that makes simple but effective software you own. No subscriptions, as little data collection as possible and usable without the internet. Once you validate your purchase a forever license is created on your PC and it won't need to connect on that computer ever again. "
+      Text            =   "Always Offline Software is a company that makes simple but effective software you own. No subscriptions, no data collection and no internet required. Licensed under the GPL v2 and free to use! If you have any issues please feel free to reach out to us on Github, Patreon or by email."
       TextAlignment   =   1
       TextColor       =   &c000000
       Tooltip         =   ""
@@ -262,7 +262,7 @@ Begin DesktopWindow AboutScreen
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Version: 0.5"
+      Text            =   "Version: 1.0"
       TextAlignment   =   0
       TextColor       =   &c000000
       Tooltip         =   ""
@@ -294,7 +294,7 @@ Begin DesktopWindow AboutScreen
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "AlwaysOfflineSoftware.com"
+      Text            =   "Our Patreon"
       TextAlignment   =   0
       TextColor       =   &c00A0FF00
       Tooltip         =   ""
@@ -371,7 +371,7 @@ End
 #tag Events lbl_website
 	#tag Event
 		Function MouseDown(x As Integer, y As Integer) As Boolean
-		  System.GotoURL("https://alwaysofflinesoftware.com")
+		  System.GotoURL("https://www.patreon.com/c/AlwaysOfflineSoftware")
 		  return true
 		End Function
 	#tag EndEvent
