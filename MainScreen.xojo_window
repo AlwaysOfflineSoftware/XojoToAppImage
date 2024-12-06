@@ -513,18 +513,6 @@ End
 #tag WindowCode
 #tag EndWindowCode
 
-#tag Events imv_Icon
-	#tag Event
-		Function ConstructContextualMenu(base As DesktopMenuItem, x As Integer, y As Integer) As Boolean
-		  
-		End Function
-	#tag EndEvent
-	#tag Event
-		Function ContextualMenuItemSelected(selectedItem As DesktopMenuItem) As Boolean
-		  
-		End Function
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_BrowseIcon
 	#tag Event
 		Sub Pressed()
@@ -556,14 +544,26 @@ End
 #tag Events txt_XojoExecutable
 	#tag Event
 		Sub TextChanged()
-		  Var possibleDir As FolderItem = New FolderItem(Me.Text)
 		  
-		  If(possibleDir.Exists) Then
-		    Self.btn_Run.Enabled= True
-		  Else
-		    Self.btn_Run.Enabled= False
+		  Try
+		    If(Utils.ValidatePath(Me.Text)) Then
+		      Var possibleDir As FolderItem = New FolderItem(Me.Text)
+		      
+		      If(possibleDir.Exists) Then
+		        Self.btn_Run.Enabled= True
+		      Else
+		        Self.btn_Run.Enabled= False
+		      End
+		    End
+		    
+		  Catch e As RuntimeException
+		    
 		  End
-		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DropObject(obj As DragItem, action As DragItem.Types)
+		  me.Text= obj.FolderItem.NativePath.Trim
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -599,19 +599,30 @@ End
 #tag Events txt_Icon
 	#tag Event
 		Sub TextChanged()
-		  Var possibleFile As FolderItem = New FolderItem(Me.Text)
-		  Var possiblePicture As Picture 
-		  
-		  If(possibleFile.Exists And possibleFile.Name.Right(4)=".png") Then
-		    possiblePicture= Utils.LoadPicture(possibleFile,125,125)
+		  Try
+		    If(Utils.ValidatePath(Me.Text)) Then
+		      Var possibleFile As New FolderItem(Me.Text)
+		      Var possiblePicture As Picture 
+		      
+		      If(possibleFile.Exists And possibleFile.Name.Right(4)=".png") Then
+		        possiblePicture= Utils.LoadPicture(possibleFile,125,125)
+		        
+		        Self.imv_Icon.Image= possiblePicture
+		        Me.Tooltip= "Image to be used as Icon"
+		      Else
+		        Self.imv_Icon.Image= img_BlankImage
+		        Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
+		      End
+		    End
+		  Catch e As RuntimeException
 		    
-		    Self.imv_Icon.Image= possiblePicture
-		    Me.Tooltip= "Image to be used as Icon"
-		  Else
-		    Self.imv_Icon.Image= img_BlankImage
-		    Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
 		  End
 		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DropObject(obj As DragItem, action As DragItem.Types)
+		  Me.Text= obj.FolderItem.NativePath.Trim
 		  
 		End Sub
 	#tag EndEvent

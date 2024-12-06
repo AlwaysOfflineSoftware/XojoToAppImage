@@ -44,9 +44,9 @@ Protected Module AppimageHandler
 	#tag Method, Flags = &h0
 		Sub CheckForImage()
 		  If(SpecialFolder.CurrentWorkingDirectory.Child(App.programName+"-x86_64.AppImage").exists) Then
-		    Utils.ErrorHandler(1,"Success!","The AppImage seems to be created! Please validate before distributing.")
+		    Utils.popupHandler(1,"Success!","The AppImage seems to be created! Please validate before distributing.")
 		  Else
-		    Utils.ErrorHandler(3,"Something Failed...","The AppImage was not found in user home.")
+		    Utils.popupHandler(3,"Something Failed...","The AppImage was not found in user home.")
 		  End
 		End Sub
 	#tag EndMethod
