@@ -546,16 +546,19 @@ End
 		Sub TextChanged()
 		  Try
 		    Me.Text= Me.Text.Trim
+		    
 		    If(Utils.ValidatePath(Me.Text)) Then
-		      Var possibleDir As FolderItem = New FolderItem(Me.Text)
+		      Var possibleItem As FolderItem = New FolderItem(Me.Text)
+		      App.executableLocation= possibleItem
+		      App.programName= App.executableLocation.Name
+		      // System.DebugLog(possibleItem.NativePath + "?")
 		      
-		      If(possibleDir.Exists) Then
+		      If(possibleItem.Exists) Then
 		        Self.btn_Run.Enabled= True
 		      Else
 		        Self.btn_Run.Enabled= False
 		      End
 		    End
-		    
 		  Catch e As RuntimeException
 		    Utils.GeneratePopup(1,"Something went wrong!",e.Message)
 		  End
@@ -563,8 +566,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub DropObject(obj As DragItem, action As DragItem.Types)
-		  Me.Text= obj.FolderItem.NativePath.Trim
-		  
+		  Me.Text= obj.FolderItem.NativePath
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -603,11 +605,12 @@ End
 		  Try
 		    Me.Text= Me.Text.Trim
 		    If(Utils.ValidatePath(Me.Text)) Then
-		      Var possibleFile As New FolderItem(Me.Text)
+		      Var possibleImg As New FolderItem(Me.Text)
+		      App.programIcon= possibleImg
 		      Var possiblePicture As Picture 
 		      
-		      If(possibleFile.Exists And possibleFile.Name.Right(4)=".png") Then
-		        possiblePicture= Utils.LoadPicture(possibleFile,125,125)
+		      If(possibleImg.Exists And possibleImg.Name.Right(4)=".png") Then
+		        possiblePicture= Utils.LoadPicture(possibleImg,125,125)
 		        
 		        Self.imv_Icon.Image= possiblePicture
 		        Me.Tooltip= "Image to be used as Icon"
@@ -615,6 +618,7 @@ End
 		        Self.imv_Icon.Image= img_BlankImage
 		        Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
 		      End
+		      
 		    Else
 		      Self.imv_Icon.Image= img_BlankImage
 		      Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
@@ -627,7 +631,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub DropObject(obj As DragItem, action As DragItem.Types)
-		  Me.Text= obj.FolderItem.NativePath.Trim
+		  Me.Text= obj.FolderItem.NativePath
 		End Sub
 	#tag EndEvent
 #tag EndEvents
