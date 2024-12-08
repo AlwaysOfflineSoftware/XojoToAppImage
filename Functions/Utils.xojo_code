@@ -27,33 +27,7 @@ Protected Module Utils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function LoadPicture(file As folderitem, newWidth As Integer = 0, newHeight As Integer = 0) As Picture
-		  Var original As Picture= Picture.Open(file)
-		  
-		  Dim newPict As New Picture(newWidth, newHeight, original.Depth )
-		  newPict.Graphics.DrawPicture(_
-		   original, 0, 0, newPict.Width, newPict.Height, 0, 0, original.Width, original.Height )
-		  
-		  return newPict
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function LoadPicture(pict As Picture, newWidth As Integer = 0, newHeight As Integer = 0) As Picture
-		  Var original As Picture= pict
-		  
-		  Dim newPict As New Picture(newWidth, newHeight, original.Depth )
-		  newPict.Graphics.DrawPicture(_
-		   original, 0, 0, newPict.Width, newPict.Height, 0, 0, original.Width, original.Height )
-		  
-		  Return newPict
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub PopupHandler(typeCode as integer, message as String, explain as String)
+		Sub GeneratePopup(typeCode as integer, message as String, explain as String)
 		  Var diag As New MessageDialog                  // declare the MessageDialog object
 		  Var clickItem As MessageDialogButton                // for handling the result
 		  
@@ -79,6 +53,32 @@ Protected Module Utils
 		    clickItem.Cancel= true
 		  End Select
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LoadPicture(file As folderitem, newWidth As Integer = 0, newHeight As Integer = 0) As Picture
+		  Var original As Picture= Picture.Open(file)
+		  
+		  Dim newPict As New Picture(newWidth, newHeight, original.Depth )
+		  newPict.Graphics.DrawPicture(_
+		   original, 0, 0, newPict.Width, newPict.Height, 0, 0, original.Width, original.Height )
+		  
+		  return newPict
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LoadPicture(pict As Picture, newWidth As Integer = 0, newHeight As Integer = 0) As Picture
+		  Var original As Picture= pict
+		  
+		  Dim newPict As New Picture(newWidth, newHeight, original.Depth )
+		  newPict.Graphics.DrawPicture(_
+		   original, 0, 0, newPict.Width, newPict.Height, 0, 0, original.Width, original.Height )
+		  
+		  Return newPict
+		  
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -207,7 +207,7 @@ Protected Module Utils
 		    End
 		    
 		    If(cmd.ExitCode <> 0) Then
-		      PopupHandler(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
+		      GeneratePopup(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
 		    End If
 		    
 		  Else
@@ -219,7 +219,7 @@ Protected Module Utils
 		    End
 		    
 		    If(cmd.ExitCode <> 0) Then
-		      PopupHandler(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
+		      GeneratePopup(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
 		    End If
 		  End
 		  
@@ -242,7 +242,7 @@ Protected Module Utils
 		    End
 		    
 		    If(cmd.ExitCode <> 0) Then
-		      PopupHandler(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
+		      GeneratePopup(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
 		    End If
 		    
 		  Else
@@ -256,7 +256,7 @@ Protected Module Utils
 		    End
 		    
 		    If(cmd.ExitCode <> 0) Then
-		      PopupHandler(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
+		      GeneratePopup(3,"Shell Command Failed","The exit code is: " + cmd.ExitCode.ToString)
 		    End If
 		  End
 		  
@@ -325,7 +325,7 @@ Protected Module Utils
 		      End If
 		    End
 		  Catch e As IOException
-		    PopupHandler(2,"IO Issue writing file", "File could not be written to: ' + folder.URLPath + '")
+		    GeneratePopup(2,"IO Issue writing file", "File could not be written to: ' + folder.URLPath + '")
 		  End Try
 		  
 		  
@@ -359,7 +359,7 @@ Protected Module Utils
 		      End If
 		    End
 		  Catch e As IOException
-		    PopupHandler(2,"IO Issue writing file", "File could not be written to: ' + folder.URLPath + '")
+		    GeneratePopup(2,"IO Issue writing file", "File could not be written to: ' + folder.URLPath + '")
 		  End Try
 		  
 		  

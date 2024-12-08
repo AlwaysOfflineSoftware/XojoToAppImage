@@ -544,8 +544,8 @@ End
 #tag Events txt_XojoExecutable
 	#tag Event
 		Sub TextChanged()
-		  
 		  Try
+		    Me.Text= Me.Text.Trim
 		    If(Utils.ValidatePath(Me.Text)) Then
 		      Var possibleDir As FolderItem = New FolderItem(Me.Text)
 		      
@@ -557,13 +557,14 @@ End
 		    End
 		    
 		  Catch e As RuntimeException
-		    
+		    Utils.GeneratePopup(1,"Something went wrong!",e.Message)
 		  End
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub DropObject(obj As DragItem, action As DragItem.Types)
-		  me.Text= obj.FolderItem.NativePath.Trim
+		  Me.Text= obj.FolderItem.NativePath.Trim
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -600,6 +601,7 @@ End
 	#tag Event
 		Sub TextChanged()
 		  Try
+		    Me.Text= Me.Text.Trim
 		    If(Utils.ValidatePath(Me.Text)) Then
 		      Var possibleFile As New FolderItem(Me.Text)
 		      Var possiblePicture As Picture 
@@ -613,9 +615,12 @@ End
 		        Self.imv_Icon.Image= img_BlankImage
 		        Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
 		      End
+		    Else
+		      Self.imv_Icon.Image= img_BlankImage
+		      Me.Tooltip= "Files must be .png and 256x256 to work as AppImage Icons"
 		    End
 		  Catch e As RuntimeException
-		    
+		    Utils.GeneratePopup(1,"Something went wrong!",e.message)
 		  End
 		  
 		End Sub
@@ -623,7 +628,6 @@ End
 	#tag Event
 		Sub DropObject(obj As DragItem, action As DragItem.Types)
 		  Me.Text= obj.FolderItem.NativePath.Trim
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
