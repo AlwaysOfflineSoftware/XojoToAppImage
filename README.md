@@ -51,7 +51,7 @@ Should all be included in the program but if for some reason it doesn't run, try
 - libwebkit2gtk
 - libiodbc
 
-For using Xojo and the IDE dependancies look here: <ahttps://documentation.xojo.com/resources/system_requirements_for_current_release.html></a>
+For using Xojo and the IDE dependancies look here: <a  href=https://documentation.xojo.com/resources/system_requirements_for_current_release.html>Xojo Requirements Page</a>
 
 ## License
 
