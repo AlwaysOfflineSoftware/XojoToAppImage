@@ -1,6 +1,6 @@
 # XojoToAppImage  [![License](https://img.shields.io/badge/License-GPLv2-green)](#license)
 
-A tool for turning compiled Xojo Linux programs into the extremely portable and compatible AppImage!
+A graphical tool using <a href=https://github.com/AppImage/appimagetool>Appimagetool</a> for turning compiled Xojo Linux programs into the extremely portable and compatible AppImage!
 
 ![image](https://github.com/user-attachments/assets/1c8bd7a7-dfc7-44de-886d-e4be4f952420)
 
