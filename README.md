@@ -47,7 +47,7 @@ If you actively submit good changes, I'll probably make you a Contributor so tha
 ## Requirements
 Should all be included in the program but if for some reason it doesn't run, try installing these via apt:
 - libunwind8
-- libsoup 2.4
+- libsoup 2.4 (minimum)
 - libwebkit2gtk
 - libiodbc
 
