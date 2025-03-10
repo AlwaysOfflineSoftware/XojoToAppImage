@@ -9,7 +9,7 @@ A tool for turning compiled Xojo Linux programs into the extremely portable and 
 </dl>
 
 ## How to Use
-Download the app image or archive (unzip the archive) and then run,r learn how to build it yourself below.
+Download the app image or archive (unzip the archive) and then run, or learn how to build it yourself below.
 Then place the path of the main Xojo executable in the executable field and the icon path in the icon field and hit the run button. Instantly and appimage should be generated!
 
 
